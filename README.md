@@ -17,8 +17,8 @@ LidLock combina las dos cosas: al cerrar la tapa **bloquea la sesión** (te pedi
 
 - Icono en la bandeja del sistema con un menú (como TranslucentTB): activar/desactivar, iniciar con Windows,
   buscar y aplicar actualizaciones, abrir el proyecto en GitHub, desinstalar y salir.
-- **Muy ligero:** un único `.exe` de ~60 KB, ≈4 MB de RAM y 0 % de CPU en reposo. No usa servicios ni tareas
-  programadas.
+- **Muy ligero:** un único `.exe` de ~60 KB, 0 % de CPU en reposo y apenas ~1 MB de RAM en uso (≈13 MB de memoria
+  privada reservada por .NET, según el Administrador de tareas). No usa servicios ni tareas programadas.
 - **Reversible:** antes de cambiar nada guarda tus ajustes originales y te los devuelve al desactivar o desinstalar.
 - **Te avisa antes:** muestra exactamente qué va a cambiar y espera a que aceptes.
 - **Actualizaciones:** al iniciar consulta los *releases* de este repositorio; si hay uno nuevo lo ofrece en el menú
@@ -101,7 +101,7 @@ the lid to "Do nothing" keeps them running but leaves your session **unlocked**.
 session** when the lid closes and **everything else keeps running**.
 
 **Features:** tray icon with a menu (enable/disable, open at boot, check/apply updates, open on GitHub, uninstall,
-exit) · a single ~60 KB `.exe`, ≈4 MB RAM, 0 % CPU when idle · fully reversible (your original settings are saved and
+exit) · a single ~60 KB `.exe`, ~1 MB RAM in use (≈13 MB reserved by .NET), 0 % CPU when idle · fully reversible (your original settings are saved and
 restored) · asks for consent before changing anything · updates itself from this repository's releases (SHA-256
 verified) · English and Spanish UI.
 
