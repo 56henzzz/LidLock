@@ -42,5 +42,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          gh release view $env:GITHUB_REF_NAME *> $null
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "El release $env:GITHUB_REF_NAME ya existe; se omite la publicación."
+            exit 0
+          }
           gh release create $env:GITHUB_REF_NAME build/LidLock.exe build/LidLock.exe.sha256 `
             --title "LidLock $env:GITHUB_REF_NAME" --generate-notes
