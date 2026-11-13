@@ -7,6 +7,7 @@ namespace LidLock
     {
         // Argumentos:
         //   --apply / --restore "<instantanea>"  uso interno: pasos con permisos de administrador
+        //   --check / --update <exe> <sha256>    uso interno: red (actualizaciones) en un proceso hijo de corta vida
         //   --welcome                            tras instalar: muestra el aviso de bienvenida
         //   --no-install                         desarrollo: abre la bandeja sin instalar
         private static int Main(string[] args)
@@ -14,6 +15,8 @@ namespace LidLock
             string command = args.Length > 0 ? args[0] : "";
             if (command == "--apply") return PowerSettings.Apply() ? 0 : 1;
             if (command == "--restore") return PowerSettings.Restore(args.Length > 1 ? args[1] : "") ? 0 : 1;
+            if (command == "--check") { Updater.PrintCheck(); return 0; }
+            if (command == "--update") return args.Length > 2 ? Updater.Stage(args[1], args[2]) : 1;
 
             bool noInstall = Array.IndexOf(args, "--no-install") >= 0;
             if (!noInstall && !Installer.IsInstalled) return Installer.FirstRun();

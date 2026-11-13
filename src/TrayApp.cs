@@ -311,7 +311,7 @@ namespace LidLock
             Thread worker = new Thread(delegate()
             {
                 if (!manual) Thread.Sleep(15000); // no competir con el arranque de Windows
-                int result = Updater.Check();
+                int result = Updater.CheckInChild();
                 Native.PostMessage(window, WM_UPDATE_DONE, manual ? (IntPtr)1 : IntPtr.Zero, (IntPtr)result);
             });
             worker.IsBackground = true;
@@ -342,7 +342,7 @@ namespace LidLock
                 StartUpdateCheck(true);
                 return;
             }
-            if (Updater.DownloadAndStage()) Quit();
+            if (Updater.StageInChild()) Quit();
             else Message(Strings.Get("UpdateFailed"), Native.MB_ICONERROR);
         }
 
